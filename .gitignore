@@ -1,0 +1,6 @@
+## .gitignore ##
+# ignore all
+*
+!*/
+# allow any
+!*.*
