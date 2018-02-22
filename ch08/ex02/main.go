@@ -33,6 +33,9 @@ func handleConn(conn net.Conn) {
 	if err != nil {
 
 	}
+
+	io.WriteString(conn, "230")
+
 	exPath := filepath.Dir(exDir)
 	buf := bufio.NewScanner(conn)
 	for buf.Scan() {
