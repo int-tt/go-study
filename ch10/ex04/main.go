@@ -49,6 +49,17 @@ func getPacakgeList(packages ...string) ([]*packageInfo, error) {
 		io.Copy(ioutil.Discard, stderr)
 		stderr.Close()
 	}()
+
+	if err = cmd.Start(); err != nil {
+		return nil, err
+	}
+
+	go func() {
+		if err := cmd.Wait(); err != nil {
+			log.Print(err)
+		}
+	}()
+
 	decoder := json.NewDecoder(stdout)
 	var pInfos []*packageInfo
 	for {
