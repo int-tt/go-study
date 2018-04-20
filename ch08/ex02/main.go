@@ -34,7 +34,7 @@ func handleConn(conn net.Conn) {
 
 	}
 
-	io.WriteString(conn, "220 Hello!")
+	io.WriteString(conn, "220Hello!\r\n")
 
 	exPath := filepath.Dir(exDir)
 	buf := bufio.NewScanner(conn)
